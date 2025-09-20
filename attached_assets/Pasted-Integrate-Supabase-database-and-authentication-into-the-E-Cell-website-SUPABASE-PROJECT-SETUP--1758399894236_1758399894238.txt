@@ -1,0 +1,86 @@
+Integrate Supabase database and authentication into the E-Cell website:
+
+SUPABASE PROJECT SETUP:
+- Create new Supabase project
+- Configure environment variables in Replit
+- Install Supabase JavaScript client
+- Set up proper CORS and security settings
+
+DATABASE SCHEMA:
+Create two main tables:
+
+1. PROFILES TABLE:
+   - id (UUID, primary key)
+   - user_id (UUID, foreign key to auth.users)
+   - full_name (text)
+   - email (text)
+   - department (text)
+   - year (text)
+   - avatar_url (text, optional)
+   - bio (text, optional)
+   - created_at (timestamp)
+   - updated_at (timestamp)
+
+2. EVENTS TABLE:
+   - id (integer, primary key)
+   - title (text, not null)
+   - description (text)
+   - event_date (date)
+   - event_time (time)
+   - location (text)
+   - image_url (text, optional)
+   - max_participants (integer, optional)
+   - created_by (UUID, foreign key to auth.users)
+   - created_at (timestamp)
+   - updated_at (timestamp)
+   - is_active (boolean, default true)
+
+ROW LEVEL SECURITY (RLS):
+- Enable RLS on both tables
+- Profiles: Users can only read all profiles, update their own
+- Events: All users can read, only coordinators can create/update/delete
+- Create policies for secure data access
+
+AUTHENTICATION IMPLEMENTATION:
+- Replace mock login with Supabase Auth
+- Implement signup with email verification
+- Add password reset functionality
+- Create protected routes for authenticated users
+- Add user session management
+- Implement logout functionality
+
+USER PROFILE MANAGEMENT:
+- Automatic profile creation on signup
+- Profile editing functionality
+- Avatar upload to Supabase Storage
+- Real-time profile updates
+- Department and year selection dropdowns
+
+EVENTS MANAGEMENT:
+- Fetch events from Supabase in real-time
+- RSVP functionality (store in separate table if needed)
+- Event filtering and search
+- Coordinator-only event creation/editing
+- Real-time event updates using Supabase Realtime
+
+DATA MIGRATION:
+- Convert localStorage data to Supabase
+- Migrate mock user data to profiles table
+- Move sample events to events table
+- Update all API calls to use Supabase
+- Remove localStorage dependencies
+
+ERROR HANDLING:
+- Add proper error messages for auth failures
+- Handle network connectivity issues
+- Add loading states for all database operations
+- Implement retry mechanisms for failed requests
+
+SECURITY MEASURES:
+- Validate all user inputs
+- Sanitize data before database insertion
+- Implement rate limiting for posts/comments
+- Add CAPTCHA for signup if needed
+- Secure API keys and credentials
+
+Note: Posts and comments remain client-side only (localStorage/sessionStorage) as requested. Only user profiles and events use the database.
