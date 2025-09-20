@@ -9,9 +9,6 @@ import teamImage3 from '@assets/stock_images/diverse_student_team_b3352adf.jpg';
 
 export default function TeamSection() {
 
-  const handleConnect = (member: string) => {
-    console.log(`Connect with ${member} clicked`);
-  };
 
   return (
     <section className="py-16 bg-muted/30">

@@ -1,17 +1,19 @@
 import Header from '@/components/Header';
-import EventsSection from '@/components/EventsSection';
+import EnhancedEventsPage from '@/components/EnhancedEventsPage';
 import Footer from '@/components/Footer';
-import BottomNavigation from '@/components/BottomNavigation';
+import EnhancedBottomNavigation from '@/components/EnhancedBottomNavigation';
 
 export default function Events() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className="pt-8">
-        <EventsSection />
+      <main className="py-8 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <EnhancedEventsPage />
+        </div>
       </main>
       <Footer />
-      <BottomNavigation />
+      <EnhancedBottomNavigation />
       <div className="h-20"></div>
     </div>
   );
