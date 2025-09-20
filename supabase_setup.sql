@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS public.profiles (
     full_name TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE,
     department TEXT NOT NULL,
-    year TEXT NOT NULL,
+    batch TEXT NOT NULL,
     avatar_url TEXT,
     bio TEXT,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
@@ -86,7 +86,7 @@ BEGIN
         COALESCE(NEW.raw_user_meta_data->>'full_name', 'User'),
         NEW.email,
         COALESCE(NEW.raw_user_meta_data->>'department', 'Not specified'),
-        COALESCE(NEW.raw_user_meta_data->>'year', 'Not specified')
+        COALESCE(NEW.raw_user_meta_data->>'batch', 'Not specified')
     );
     RETURN NEW;
 END;

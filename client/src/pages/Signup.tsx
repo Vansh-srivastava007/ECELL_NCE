@@ -12,19 +12,18 @@ import { Eye, EyeOff, Mail, Lock, User, GraduationCap } from 'lucide-react'
 
 const DEPARTMENTS = [
   "Computer Science",
-  "Electronics",
+  "AIML",
   "Mechanical",
   "Civil",
   "Electrical",
-  "Chemical",
-  "Other"
+  "Aeronautical"
 ]
 
-const YEARS = [
-  "1st Year",
-  "2nd Year", 
-  "3rd Year",
-  "4th Year",
+const BATCHES = [
+  "2025",
+  "2024",
+  "2023", 
+  "2022",
   "Graduate"
 ]
 
@@ -39,7 +38,7 @@ export default function Signup() {
     confirmPassword: '',
     full_name: '',
     department: '',
-    year: ''
+    batch: ''
   })
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
@@ -51,7 +50,7 @@ export default function Signup() {
   }
 
   const validateForm = () => {
-    if (!formData.email || !formData.password || !formData.full_name || !formData.department || !formData.year) {
+    if (!formData.email || !formData.password || !formData.full_name || !formData.department || !formData.batch) {
       return 'Please fill in all required fields'
     }
     
@@ -82,7 +81,7 @@ export default function Signup() {
     const { error } = await signUp(formData.email, formData.password, {
       full_name: formData.full_name,
       department: formData.department,
-      year: formData.year
+      batch: formData.batch
     })
 
     if (error) {
@@ -184,19 +183,19 @@ export default function Signup() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="year">Year</Label>
+                <Label htmlFor="batch">Batch</Label>
                 <Select
-                  value={formData.year}
-                  onValueChange={(value) => handleInputChange('year', value)}
+                  value={formData.batch}
+                  onValueChange={(value) => handleInputChange('batch', value)}
                   required
                 >
-                  <SelectTrigger data-testid="select-year">
-                    <SelectValue placeholder="Select year" />
+                  <SelectTrigger data-testid="select-batch">
+                    <SelectValue placeholder="Select batch" />
                   </SelectTrigger>
                   <SelectContent>
-                    {YEARS.map((year) => (
-                      <SelectItem key={year} value={year}>
-                        {year}
+                    {BATCHES.map((batch) => (
+                      <SelectItem key={batch} value={batch}>
+                        {batch}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -265,11 +264,14 @@ export default function Signup() {
 
             <div className="text-center text-sm">
               Already have an account?{" "}
-              <Link href="/login">
-                <a className="text-blue-600 hover:text-blue-800 dark:text-blue-400 font-medium" data-testid="link-login">
-                  Sign in here
-                </a>
-              </Link>
+              <button
+                type="button"
+                onClick={() => setLocation('/login')}
+                className="text-blue-600 hover:text-blue-800 dark:text-blue-400 font-medium"
+                data-testid="link-login"
+              >
+                Sign in here
+              </button>
             </div>
           </form>
         </CardContent>

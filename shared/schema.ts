@@ -10,7 +10,7 @@ export const profiles = pgTable("profiles", {
   full_name: text("full_name").notNull(),
   email: text("email").notNull().unique(),
   department: text("department").notNull(),
-  year: text("year").notNull(),
+  batch: text("batch").notNull(),
   avatar_url: text("avatar_url"),
   bio: text("bio"),
   created_at: timestamp("created_at").defaultNow().notNull(),
@@ -39,8 +39,8 @@ export const insertProfileSchema = createInsertSchema(profiles).omit({
   created_at: true,
   updated_at: true,
 }).extend({
-  department: z.enum(["Computer Science", "Electronics", "Mechanical", "Civil", "Electrical", "Chemical", "Other"]),
-  year: z.enum(["1st Year", "2nd Year", "3rd Year", "4th Year", "Graduate"]),
+  department: z.enum(["Computer Science", "AIML", "Mechanical", "Civil", "Electrical", "Aeronautical"]),
+  batch: z.enum(["2025", "2024", "2023", "2022", "Graduate"]),
 });
 
 export const updateProfileSchema = insertProfileSchema.partial().omit({

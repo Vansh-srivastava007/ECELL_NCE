@@ -114,11 +114,14 @@ export default function Login() {
             </div>
 
             <div className="flex items-center justify-between">
-              <Link href="/forgot-password">
-                <a className="text-sm text-blue-600 hover:text-blue-800 dark:text-blue-400" data-testid="link-forgot-password">
-                  Forgot your password?
-                </a>
-              </Link>
+              <button
+                type="button"
+                onClick={() => setLocation('/forgot-password')}
+                className="text-sm text-blue-600 hover:text-blue-800 dark:text-blue-400"
+                data-testid="link-forgot-password"
+              >
+                Forgot your password?
+              </button>
             </div>
 
             <Button
@@ -132,11 +135,14 @@ export default function Login() {
 
             <div className="text-center text-sm">
               Don't have an account?{" "}
-              <Link href="/signup">
-                <a className="text-blue-600 hover:text-blue-800 dark:text-blue-400 font-medium" data-testid="link-signup">
-                  Sign up here
-                </a>
-              </Link>
+              <button
+                type="button"
+                onClick={() => setLocation('/signup')}
+                className="text-blue-600 hover:text-blue-800 dark:text-blue-400 font-medium"
+                data-testid="link-signup"
+              >
+                Sign up here
+              </button>
             </div>
           </form>
         </CardContent>
