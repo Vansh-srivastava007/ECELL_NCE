@@ -327,7 +327,7 @@ export default function EnhancedProfile() {
           
           <div className="space-y-4">
             <p className="text-muted-foreground" data-testid="text-profile-bio">
-              {profile.name.split(' ').map(n => n[0]).join('').toUpperCase()}
+              {profile.bio}
             </p>
             
             <div className="flex items-center space-x-2">
