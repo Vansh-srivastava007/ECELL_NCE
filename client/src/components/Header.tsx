@@ -43,11 +43,6 @@ export default function Header() {
             </div>
             
             <nav className="flex items-center space-x-4">
-              {user && (
-                <Link href="/post">
-                  <Button variant="ghost" size="sm" className="hover-elevate" data-testid="button-nav-posts">Posts</Button>
-                </Link>
-              )}
             </nav>
 
             <div className="flex items-center space-x-2">
