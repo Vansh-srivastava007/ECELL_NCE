@@ -42,8 +42,8 @@ export default function EnhancedBottomNavigation() {
   };
 
   return (
-    <nav className="fixed bottom-0 left-1/2 transform -translate-x-1/2 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border border-border rounded-t-2xl shadow-lg">
-      <div className="max-w-xs mx-auto">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-t border-border shadow-lg">
+      <div className="w-full">
         <div className="flex items-center justify-around py-3 px-4">
           {tabs.map((tab) => {
             const Icon = tab.icon;
