@@ -37,8 +37,8 @@ export default function Signup() {
     password: '',
     confirmPassword: '',
     full_name: '',
-    department: '',
-    batch: ''
+    dept: '',
+    year: ''
   })
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
@@ -50,7 +50,7 @@ export default function Signup() {
   }
 
   const validateForm = () => {
-    if (!formData.email || !formData.password || !formData.full_name || !formData.department || !formData.batch) {
+    if (!formData.email || !formData.password || !formData.full_name || !formData.dept || !formData.year) {
       return 'Please fill in all required fields'
     }
     
@@ -80,8 +80,8 @@ export default function Signup() {
 
     const { error } = await signUp(formData.email, formData.password, {
       full_name: formData.full_name,
-      department: formData.department,
-      batch: formData.batch
+      dept: formData.dept,
+      year: formData.year
     })
 
     if (error) {
@@ -165,8 +165,8 @@ export default function Signup() {
               <div className="space-y-2">
                 <Label htmlFor="department">Department</Label>
                 <Select
-                  value={formData.department}
-                  onValueChange={(value) => handleInputChange('department', value)}
+                  value={formData.dept}
+                  onValueChange={(value) => handleInputChange('dept', value)}
                   required
                 >
                   <SelectTrigger data-testid="select-department">
@@ -183,14 +183,14 @@ export default function Signup() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="batch">Batch</Label>
+                <Label htmlFor="year">Year</Label>
                 <Select
-                  value={formData.batch}
-                  onValueChange={(value) => handleInputChange('batch', value)}
+                  value={formData.year}
+                  onValueChange={(value) => handleInputChange('year', value)}
                   required
                 >
-                  <SelectTrigger data-testid="select-batch">
-                    <SelectValue placeholder="Select batch" />
+                  <SelectTrigger data-testid="select-year">
+                    <SelectValue placeholder="Select year" />
                   </SelectTrigger>
                   <SelectContent>
                     {BATCHES.map((batch) => (

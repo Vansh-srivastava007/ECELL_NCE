@@ -52,7 +52,7 @@ export default function Header() {
                     <Button variant="ghost" className="relative h-8 w-8 rounded-full" data-testid="button-user-menu">
                       <Avatar className="h-8 w-8">
                         <AvatarImage src={profile?.avatar_url || ''} alt={profile?.full_name || ''} />
-                        <AvatarFallback>{profile?.full_name?.charAt(0) || 'U'}</AvatarFallback>
+                        <AvatarFallback>{profile?.initials || profile?.full_name?.charAt(0) || 'U'}</AvatarFallback>
                       </Avatar>
                     </Button>
                   </DropdownMenuTrigger>
@@ -98,9 +98,9 @@ export default function Header() {
           <div className="max-w-7xl mx-auto">
             <p className="text-sm text-center" data-testid="welcome-message">
               Welcome back, <span className="font-semibold">{profile?.full_name || 'User'}</span>! 
-              {profile?.department && profile?.batch && (
+              {profile?.dept && profile?.year && (
                 <span className="ml-2 opacity-90">
-                  {profile.department} • Batch {profile.batch}
+                  {profile.dept} • Year {profile.year}
                 </span>
               )}
             </p>

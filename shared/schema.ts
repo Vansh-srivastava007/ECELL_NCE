@@ -9,8 +9,9 @@ export const profiles = pgTable("profiles", {
   user_id: uuid("user_id").notNull().unique(), // Foreign key to auth.users
   full_name: text("full_name").notNull(),
   email: text("email").notNull().unique(),
-  department: text("department").notNull(),
-  batch: text("batch").notNull(),
+  dept: text("dept").notNull(),
+  year: text("year").notNull(),
+  initials: text("initials"),
   avatar_url: text("avatar_url"),
   bio: text("bio"),
   created_at: timestamp("created_at").defaultNow().notNull(),
@@ -39,8 +40,9 @@ export const insertProfileSchema = createInsertSchema(profiles).omit({
   created_at: true,
   updated_at: true,
 }).extend({
-  department: z.enum(["Computer Science", "AIML", "Mechanical", "Civil", "Electrical", "Aeronautical"]),
-  batch: z.enum(["2025", "2024", "2023", "2022", "Graduate"]),
+  dept: z.enum(["Computer Science", "AIML", "Mechanical", "Civil", "Electrical", "Aeronautical"]),
+  year: z.enum(["2025", "2024", "2023", "2022", "Graduate"]),
+  initials: z.string().max(3).optional(),
 });
 
 export const updateProfileSchema = insertProfileSchema.partial().omit({
@@ -53,8 +55,6 @@ export const insertEventSchema = createInsertSchema(events).omit({
   created_at: true,
   updated_at: true,
   created_by: true,
-}).extend({
-  is_active: z.boolean().optional(),
 });
 
 export const updateEventSchema = insertEventSchema.partial();

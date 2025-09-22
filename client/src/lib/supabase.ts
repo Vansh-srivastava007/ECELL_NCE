@@ -30,8 +30,9 @@ export type Database = {
           user_id: string
           full_name: string
           email: string
-          department: string
+          dept: string
           year: string
+          initials: string | null
           avatar_url: string | null
           bio: string | null
           created_at: string
@@ -42,8 +43,9 @@ export type Database = {
           user_id: string
           full_name: string
           email: string
-          department: string
+          dept: string
           year: string
+          initials?: string | null
           avatar_url?: string | null
           bio?: string | null
           created_at?: string
@@ -54,8 +56,9 @@ export type Database = {
           user_id?: string
           full_name?: string
           email?: string
-          department?: string
+          dept?: string
           year?: string
+          initials?: string | null
           avatar_url?: string | null
           bio?: string | null
           created_at?: string
